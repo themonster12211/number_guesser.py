@@ -1,0 +1,34 @@
+import random 
+
+GUESSRANGE_MIN = 1
+GUESSRANGE_MAX = 10000
+hiddenNum = random.randrange(GUESSRANGE_MIN,GUESSRANGE_MAX+1)
+
+numGuesses = 0
+
+stillRunning = True
+
+while stillRunning:
+
+    userGuess = input ("Give me a number between "+str(GUESSRANGE_MIN)+ " and "+str(GUESSRANGE_MAX)+":")
+    numGuesses += 1
+    userGuess = int(userGuess)
+
+    correct = hiddenNum == userGuess
+
+    if correct:
+        print("wow you nailed it, great job!")
+        stillRunning = False
+    else:
+        message = 'you were too '
+        distance = userGuess-hiddenNum
+        if distance < 0: 
+            message = message + 'low!'
+        else:
+            message = message + 'high!'
+        print(message)
+    print("it took you", numGuesses, "guesses!!")
+           
+
+    print("That's about what I expected...")
+        #print("You were", distance,'far awar')
